@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    background-color: #434343;
+}
+
+#logout-button {
+    background-color: #f7c873;
+    color: #434343;
+    font-weight: bolder;
+}
+
+.content {
+    width: 100%;
+    height: 500px;
+    background-image: url("../img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    display: block;
+    position: relative;
+    overflow: auto;
+    opacity: 70%;
+}

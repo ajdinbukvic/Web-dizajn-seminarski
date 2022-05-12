@@ -1,0 +1,117 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #faebcd;
+}
+
+#header {
+    background-color: #434343;
+}
+
+#login-button {
+    background-color: #f7c873;
+    color: #434343;
+    font-weight: bolder;
+}
+
+.info {
+    border: 4px solid #f8f8f8;
+    border-radius: 60%;
+    background-color: #434343;
+    color: #f7c873;
+    margin: auto;
+    padding: 20px;
+    margin: 20px auto;
+    width: 50%;
+}
+
+.info:hover {
+    background-color: #f7c873;
+    border: 2px solid #f8f8f8;
+    color: #434343;
+    text-decoration: underline;
+    text-decoration-color: #faebcd;
+    text-underline-position: under;
+}
+
+#text {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+} 
+
+#wrapper {
+    padding: 20px;
+}
+
+.carousel-inner img {
+    margin: auto;
+    width: 70vh;
+    height: 70vh;
+}
+
+.carousel-inner img:hover {
+    filter:grayscale(1);
+    transform: scale(1.3);
+    border: 8px solid red; 
+}
+
+.carousel-caption {
+    background-color: #f7c873;
+    width: 20%;
+    height: 20%;
+    margin: auto;
+    padding: 10px;
+    opacity: 70%;
+    border: 5px solid #434343;
+}
+
+.carousel-caption h3,p,h4 {
+    color: #434343;
+    font-weight: bold;
+}
+
+.carousel-caption p {
+    font-size: 18px;
+    font-style: italic;
+}
+
+@media only screen and (max-width: 600px) {
+    #mob-navbar {
+        background-color: #434343;
+    }
+    .navbar-toggler {
+        background-color: #f7c873;
+    }
+    #info {
+        display: inline;
+        width: 100%;
+        padding-bottom: 40px;
+    }
+    .carousel-inner img {
+        width: 40vh;
+        height: 40vh;
+    }
+    .carousel-caption {
+        width: 50%;
+        height: 50%;
+        font-size: 14px;
+    }
+  }
+
+@media only screen and (min-width: 601px) {
+    .carousel-caption {
+        width: 50%;
+        height: 25%;
+        font-size: 20px;
+    }
+    #mob-navbar {
+        background-color: #434343;
+    }
+    .navbar-toggler {
+        background-color: #f7c873;
+    }
+}
