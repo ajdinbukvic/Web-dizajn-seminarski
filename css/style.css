@@ -14,8 +14,7 @@ body {
 
 #login-button {
     background-color: #f7c873;
-    color: #434343;
-    font-weight: bolder;
+    color: #f8f8f8;
 }
 
 .info {
@@ -56,7 +55,6 @@ body {
 .carousel-inner img:hover {
     filter:grayscale(1);
     transform: scale(1.3);
-    border: 8px solid red; 
 }
 
 .carousel-caption {
@@ -79,12 +77,34 @@ body {
     font-style: italic;
 }
 
+.card-list:hover {
+    border: 4px solid #434343;
+    transform: scale(1);
+}
+
+.btn-primary {
+    background-color: #f7c873;
+    color: #f8f8f8;
+}
+
+.btn-primary:hover {
+    background-color: #434343;
+    color: #f8f8f8;
+}
+
+.btn-check:focus+.btn-primary, .btn-primary:focus {
+    color: #f8f8f8;
+    background-color: #f7c873;
+    outline: none;
+    box-shadow: none;
+}
+
 @media only screen and (max-width: 600px) {
-    #mob-navbar {
-        background-color: #434343;
-    }
     .navbar-toggler {
         background-color: #f7c873;
+    }
+    .navbar-toggler-icon {
+        background-color: #434343;
     }
     #info {
         display: inline;
@@ -108,10 +128,10 @@ body {
         height: 25%;
         font-size: 20px;
     }
-    #mob-navbar {
-        background-color: #434343;
-    }
     .navbar-toggler {
         background-color: #f7c873;
+    }
+    .navbar-toggler-icon {
+        background-color: #434343;
     }
 }

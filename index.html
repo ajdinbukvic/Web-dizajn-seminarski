@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    
+
     <!-- NAVBAR START-->
     <div id="header">
         <nav class="navbar navbar-expand-lg">
@@ -21,10 +21,10 @@
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="mob-navbar">
-                    <form class="d-flex ms-auto" action="./html/admin.html">
+                    <form class="d-flex ms-auto" action="POST">
                         <input class="form-control me-2" type="text" placeholder="Korisničko ime" id="username"/>
                         <input class="form-control me-2" type="password" placeholder="Lozinka" id="password"/>
-                        <button class="btn btn-warning" id="login-button" type="submit" onclick="login()">Prijava</button>
+                        <button class="btn btn-warning" id="login-button" type="submit" onclick="login(event)">Prijava</button>
                     </form>
                 </div>
             </div>
@@ -33,7 +33,7 @@
     <!-- NAVBAR END-->
 
     <div class="info">
-        <h3 id="text">Neke od trenutno najpopularnijih knjiga...</h1>
+        <h3 id="text">Neke od trenutno najpopularnijih knjiga...</h3>
     </div>
 
     <!-- CAROUSEL - START -->
@@ -54,9 +54,20 @@
     </div>
     <!-- CAROUSEL - END -->
 
+    <div class="info">
+        <h3 id="text">Neki od poznatih svjetskih književnika...</h3>
+    </div>
 
-
-
+    <!-- CARDS - START -->
+    <div class="container w-100 h-100">
+        <div class="row" id="card">
+             <!-- CARD - FETCHED AUTHORS -->
+        </div>
+    <!-- CARDS - END -->
+    
+    <div class="info">
+        <h3 id="text">Pretraživanje najčitanijih knjiga...</h3>
+    </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
