@@ -62,12 +62,11 @@ body {
     width: 20%;
     height: 20%;
     margin: auto;
-    padding: 10px;
     opacity: 70%;
     border: 5px solid #434343;
 }
 
-.carousel-caption h3,p,h4 {
+.carousel-caption h3,p,h5 {
     color: #434343;
     font-weight: bold;
 }

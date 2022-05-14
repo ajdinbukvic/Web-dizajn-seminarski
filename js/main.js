@@ -1,37 +1,6 @@
-const BASE_URL = 'https://ptf-web-dizajn-2022.azurewebsites.net';
 const loginUsername = 'admin';
 const loginPassword = 'admin';
-
-const infoMessage = (message, sec) =>
-{
-    const div = document.createElement('div');
-    div.setAttribute("style","background-color: #434343;color:#f8f8f8; width: 500px;height: 100px;position: absolute;top:0;bottom:0;left:0;right:0;margin:auto;border: 4px solid #faebcd;font-family:arial;font-size:24px;font-weight:bold;display: flex; align-items: center; justify-content: center; text-align: center;");
-    div.innerHTML = message;
-    setTimeout(() => {
-        div.parentNode.removeChild(div);
-    }, sec);
-    document.body.appendChild(div);
-}
-
-const handleErrors = response => {
-    if (!response.ok) {
-        throw Error(response);
-    }
-    return response.json()
-}
-
-const getBooks = () => {
-    fetch(`${BASE_URL}/books`)
-        .then(handleErrors)
-        .then(data => {
-            renderBooks(data);
-        })
-        .catch(err => {
-            console.log(err);
-        });
-}
-
-getBooks();
+const maxAuthors = 9;
 
 const renderBooks = books => {
 
@@ -51,7 +20,7 @@ const renderBooks = books => {
                 <div class="carousel-caption">
                     <h3>&quot;${book.name}&quot;</h3>
                     <p>${book.genre}</p>
-                    <h4>${book.author.name}</h4>
+                    <h5>${book.author.name}</h4>
                 </div>
             </div>`;
     
@@ -60,19 +29,6 @@ const renderBooks = books => {
 
     carousel.innerHTML = result;
 }
-
-const getAuthors = () => {
-    fetch(`${BASE_URL}/authors`)
-        .then(handleErrors)
-        .then(data => {
-            renderAuthors(data);
-        })
-        .catch(err => {
-            console.log(err);
-        });
-}
-
-getAuthors();
 
 const authorsImages = [
     './img/tolstoj.jpg',
@@ -83,6 +39,7 @@ const authorsImages = [
     './img/moyer.jpg',
     './img/nora.jpg',
     './img/romian.jpg',
+    './img/terry.jpg'
 ];
 
 const renderAuthors = authors => {
@@ -90,7 +47,10 @@ const renderAuthors = authors => {
     const card = document.getElementById('card');
     let authorsCounter = 0;
     let result = '';
-    authors.forEach(author => {
+    authors.every(author => {
+        if(authorsCounter >= maxAuthors) {
+            return false;
+        }
         result += `
             <div class="card col-4 mx-auto my-2 card-list" style="width: 18em; background-color: #f8f8f8">
                 <img src=${authorsImages[authorsCounter]} class="card-img-top" alt="..." style="height:30vh">
@@ -106,6 +66,7 @@ const renderAuthors = authors => {
                 </div>
             </div>`;
         authorsCounter++;
+        return true;
     });
 
     card.innerHTML = result;
@@ -149,6 +110,3 @@ const login = event => {
         return;
     }
 }
-
-
-
