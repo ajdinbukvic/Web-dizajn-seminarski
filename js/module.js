@@ -1,5 +1,21 @@
 const BASE_URL = 'https://ptf-web-dizajn-2022.azurewebsites.net';
 
+document.addEventListener("DOMContentLoaded", () => {
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar-top');
+        if (window.scrollY > 50) {
+          navbar.classList.add('fixed-top');
+          navbar.setAttribute('style', 'opacity: 80%');
+          const navbarHeight = document.querySelector('.navbar').offsetHeight;
+          document.body.style.paddingTop = navbarHeight + 'px';
+        } else {
+          navbar.classList.remove('fixed-top');
+          navbar.style.removeProperty('opacity');
+          document.body.style.paddingTop = '0';
+        } 
+    });
+}); 
+
 const infoMessage = (message, sec) =>
 {
     const div = document.createElement("div");

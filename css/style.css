@@ -5,11 +5,16 @@
 }
 
 body {
-    background: #faebcd;
+    background-color: #faebcd;
+    padding-top: 5%;
 }
 
-#header {
+.navbar {
     background-color: #434343;
+}
+
+#title {
+    color: #faebcd;
 }
 
 #login-button {
@@ -26,6 +31,7 @@ body {
     padding: 20px;
     margin: 20px auto;
     width: 50%;
+    top: 5%;
 }
 
 .info:hover {
@@ -64,6 +70,7 @@ body {
     margin: auto;
     opacity: 70%;
     border: 5px solid #434343;
+    line-height: 50px;
 }
 
 .carousel-caption h3,p,h5 {
@@ -124,7 +131,7 @@ body {
 @media only screen and (min-width: 601px) {
     .carousel-caption {
         width: 50%;
-        height: 25%;
+        height: 30%;
         font-size: 20px;
     }
     .navbar-toggler {

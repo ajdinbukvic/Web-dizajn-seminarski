@@ -5,9 +5,9 @@ const maxAuthors = 9;
 const renderBooks = books => {
 
     const carousel = document.getElementById('carousel-main');
-
     let result = '';
     let activeBook = false;
+
     books.forEach(book => {
         if(!activeBook) {
             result += `<div class="carousel-item active">`
@@ -20,7 +20,7 @@ const renderBooks = books => {
                 <div class="carousel-caption">
                     <h3>&quot;${book.name}&quot;</h3>
                     <p>${book.genre}</p>
-                    <h5>${book.author.name}</h4>
+                    <h5>${book.author.name}</h5>
                 </div>
             </div>`;
     
@@ -47,6 +47,7 @@ const renderAuthors = authors => {
     const card = document.getElementById('card');
     let authorsCounter = 0;
     let result = '';
+
     authors.every(author => {
         if(authorsCounter >= maxAuthors) {
             return false;

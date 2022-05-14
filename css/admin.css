@@ -4,8 +4,17 @@
     padding: 0;
 }
 
-#header {
+body {
+    padding-top: 5%; 
+}
+
+.navbar {
     background-color: #434343;
+    margin-bottom: 100px;
+}
+
+#title {
+    color: #faebcd;
 }
 
 #logout-button {
@@ -13,15 +22,68 @@
     color: #f8f8f8;
 }
 
-.content {
-    width: 100%;
-    height: 500px;
-    background-image: url("../img/background.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    display: block;
+.info {
+    border: 4px solid #f8f8f8;
+    border-radius: 60%;
+    background-color: #434343;
+    color: #f7c873;
+    margin: 20px auto;
+    padding: 20px;
+    width: 50%;
     position: relative;
-    overflow: auto;
-    opacity: 70%;
+}
+
+.info:hover {
+    background-color: #f7c873;
+    border: 2px solid #f8f8f8;
+    color: #434343;
+    text-decoration: underline;
+    text-decoration-color: #faebcd;
+    text-underline-position: under;
+}
+
+#text {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+} 
+
+.container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.container-bg {
+    opacity: 0.6;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+}
+
+ .container img {
+    width: 100%;
+    height: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+    .container {
+        padding-top: 100px;
+    }
+    #info {
+        display: inline;
+        width: 100%;
+        padding-bottom: 40px;
+    }
+  }
+
+@media only screen and (min-width: 601px) {
+    .container {
+        padding-top: 50px;
+    }
+    #info {
+        display: inline;
+        width: 100%;
+        padding-bottom: 40px;
+    }
 }
