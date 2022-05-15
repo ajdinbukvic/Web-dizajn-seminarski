@@ -76,14 +76,14 @@
             <div class="modal-body">
                 <form id="add-book-form">
                     <div class="mb-3">
-                        <label for="book-title" class="col-form-label">Naslov:</label>
-                        <input type="text" class="form-control" id="book-title">
-                        <label for="book-genre" class="col-form-label">Žanr:</label>
-                        <input type="text" class="form-control" id="book-genre">
-                        <label for="book-image" class="col-form-label">Slika:</label>
-                        <input type="text" class="form-control" id="book-image">
-                        <label for="book-author" class="col-form-label">Autor:</label>
-                        <select class="form-select" aria-label="Default select example" id="book-author">
+                        <label for="add-book-name" class="col-form-label">Naslov:</label>
+                        <input type="text" class="form-control" id="add-book-name">
+                        <label for="add-book-genre" class="col-form-label">Žanr:</label>
+                        <input type="text" class="form-control" id="add-book-genre">
+                        <label for="add-book-image" class="col-form-label">Slika:</label>
+                        <input type="text" class="form-control" id="add-book-image">
+                        <label for="add-book-author" class="col-form-label">Autor:</label>
+                        <select class="form-select" aria-label="Default select example" id="add-book-author">
                             <!-- DROPDOWN LIST - FETCHED AUTHORS -->
                         </select>
                     </div>
@@ -113,6 +113,38 @@
                 <!-- TABLE - FETCHED BOOKS -->
             </tbody>
         </table>
+    </div>
+
+    <!-- EDIT BOOK MODAL -->
+    <div class="modal fade" id="edit-book-modal" tabindex="-1" aria-labelledby="editBookModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editBookModalLabel">Promjena informacija knjige</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+            <div class="modal-body">
+                <form id="edit-book-form">
+                    <div class="mb-3">
+                        <label for="edit-book-id" class="col-form-label">Knjiga ID:</label>
+                        <input type="text" class="form-control" id="edit-book-id" disabled>
+                        <label for="edit-book-name" class="col-form-label">Naslov:</label>
+                        <input type="text" class="form-control" id="edit-book-name" disabled>
+                        <label for="edit-book-genre" class="col-form-label">Žanr:</label>
+                        <input type="text" class="form-control" id="edit-book-genre" disabled>
+                        <label for="edit-book-author-id" class="col-form-label">Autor ID:</label>
+                        <input type="text" class="form-control" id="edit-book-author-id" disabled>
+                        <label for="edit-book-image" class="col-form-label">Slika:</label>
+                        <input type="text" class="form-control" id="edit-book-image">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
+                <button type="button" class="btn btn-primary" onclick="updateBook()">Spremi</button>
+            </div>
+          </div>
+        </div>
     </div>
     
     <script src="../js/admin.js"></script>

@@ -59,7 +59,7 @@ const addAuthorsToDropdownList = () => {
     fetch(`${BASE_URL}/authors`)
     .then(handleErrors)
     .then(data => {
-        const dropdownList = document.getElementById('book-author');
+        const dropdownList = document.getElementById('add-book-author');
         let result = '';
         result += '<option selected disabled hidden>Odaberite autora</option>';
         data.forEach(author => {
@@ -74,12 +74,12 @@ const addAuthorsToDropdownList = () => {
 
 const addBook = () => {
 
-    const bookTitle = document.getElementById('book-title').value;
-    const bookGenre = document.getElementById('book-genre').value;
-    const bookImage = document.getElementById('book-image').value;
-    const bookAuthor = document.getElementById('book-author').value;
+    const bookName = document.getElementById('add-book-name').value;
+    const bookGenre = document.getElementById('add-book-genre').value;
+    const bookImage = document.getElementById('add-book-image').value;
+    const bookAuthor = document.getElementById('add-book-author').value;
 
-    if(bookTitle === '' || bookGenre === '' || bookImage === '' || bookAuthor === 'Odaberite autora') {
+    if(bookName === '' || bookGenre === '' || bookImage === '' || bookAuthor === 'Odaberite autora') {
         infoMessage('Morate prvo unijeti sve informacije o knjizi!', 1000);
         return false;
     }
@@ -88,7 +88,7 @@ const addBook = () => {
         method: 'POST',
         headers: new Headers({'content-type': 'application/json'}),
         body: JSON.stringify({
-            name: bookTitle,
+            name: bookName,
             genre: bookGenre,
             image: bookImage,
             authorId: bookAuthor
@@ -130,12 +130,12 @@ const renderBooks = books => {
                         <button type="button" class="btn btn-link btn-sm btn-rounded" onclick="openBookImage('${book.image}')">Otvori</button>
                     </td>
                     <td>
-                        <button class="btn btn-primary" type="button" onclick="editBook('${book.id}')">
+                        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#edit-book-modal" onclick="getBookById('${book.id}')">
                         <img src="../img/icons/pencil.png">
                         </button>
                     </td>
                     <td>
-                        <button class="btn btn-danger" type="button" onclick="deleteBook(${book.id})">
+                        <button class="btn btn-danger" type="button" onclick="deleteBook('${book.id}')">
                         <img src="../img/icons/delete.png">
                         </button>
                     </td>
@@ -149,10 +149,84 @@ const openBookImage = bookImage => {
     window.open(bookImage, '_blank').focus();
 }
 
-const editBook = bookId => {
+const getBookById = bookId => {
 
+    fetch(`${BASE_URL}/books/${bookId}`)
+    .then(handleErrors)
+    .then(data => {
+        editBook(data);
+    })
+    .catch(err => {
+        console.log(err);
+    });
+}
+
+const editBook = book => {
+
+    const bookId = document.getElementById('edit-book-id');
+    const bookName = document.getElementById('edit-book-name');
+    const bookGenre = document.getElementById('edit-book-genre');
+    const bookAuthorId = document.getElementById('edit-book-author-id');
+
+    bookId.value = book.id;
+    bookName.value = book.name;
+    bookGenre.value = book.genre;
+    bookAuthorId.value = book.authorId;
+
+}
+
+const updateBook = () => {
+
+    const bookId = document.getElementById('edit-book-id').value;
+    const bookName = document.getElementById('edit-book-name').value;
+    const bookGenre = document.getElementById('edit-book-genre').value;
+    const bookAuthorId = document.getElementById('edit-book-author-id').value;
+    const bookImage = document.getElementById('edit-book-image').value;
+
+    if(bookImage === '') {
+        infoMessage('Morate prvo unijeti novi link slike!', 1000);
+        return false;
+    }
+
+    fetch(`${BASE_URL}/books`, {
+        method: 'PUT',
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify ({
+            bookId: bookId,
+            name: bookName,
+            genre: bookGenre,
+            image: bookImage,
+            authorId: bookAuthorId
+        })
+    })
+    .then(res => {
+        console.log(res);
+        tableBooks.innerHTML = '';
+        getBooks();
+    })
+
+    $('#edit-book-modal').modal('hide');
+
+    $('#edit-book-modal').on('hidden.bs.modal', (event) => {
+        event.preventDefault();
+        $('#edit-book-form').find("input[type=text], textarea").val("");
+     });
 }
 
 const deleteBook = bookId => {
 
+    if(!confirm('Jeste li sigurni da želite izbrisati ovu knjigu?')) {
+        return false;
+    }
+
+    fetch(`${BASE_URL}/books/${bookId}`, {
+        method: 'DELETE'
+    })
+    .then(res => {
+        console.log(res);
+        tableBooks.innerHTML = '';
+        getBooks();
+    })
 }
