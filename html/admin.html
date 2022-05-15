@@ -40,22 +40,83 @@
     </div>
 
     <!-- GET AUTHORS TABLE -->
-    <table class="table align-middle table-secondary table-fixed w-50 mx-auto text-center">
-            <thead class="table-dark th-lg">
-                <tr>
-                    <th scope="col">R. br.</th>
-                    <th scope="col">Ime i prezime</th>
-                </tr>
-            </thead>
-            <tbody id="table-authors">
-                <!-- TABLE - FETCHED AUTHORS -->
-            </tbody>
-    </table>
- 
+    <div class="table-responsive">
+        <table class="table table-secondary align-middle table-fixed w-auto mx-auto text-center">
+                <thead class="table-dark th-lg">
+                    <tr>
+                        <th scope="col">R. br.</th>
+                        <th scope="col">Ime i prezime</th>
+                    </tr>
+                </thead>
+                <tbody id="table-authors">
+                    <!-- TABLE - FETCHED AUTHORS -->
+                </tbody>
+        </table>
+    </div>
+
     <div class="info">
         <h3 id="text">Upravljanje knjigama</h3>
     </div>
+
+    <!-- ADD BOOK BUTTON -->
+    <div class="text-center my-5">
+        <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#add-book-modal" id="add-book-button" onclick="addAuthorsToDropdownList()">
+            <img src="../img/icons/plus.png"> Dodaj novu knjigu
+        </button>
+    </div>
     
+    <!-- ADD BOOK MODAL -->
+    <div class="modal fade" id="add-book-modal" tabindex="-1" aria-labelledby="addBookModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addBookModalLabel">Informacije o knjizi</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+            <div class="modal-body">
+                <form id="add-book-form">
+                    <div class="mb-3">
+                        <label for="book-title" class="col-form-label">Naslov:</label>
+                        <input type="text" class="form-control" id="book-title">
+                        <label for="book-genre" class="col-form-label">Žanr:</label>
+                        <input type="text" class="form-control" id="book-genre">
+                        <label for="book-image" class="col-form-label">Slika:</label>
+                        <input type="text" class="form-control" id="book-image">
+                        <label for="book-author" class="col-form-label">Autor:</label>
+                        <select class="form-select" aria-label="Default select example" id="book-author">
+                            <!-- DROPDOWN LIST - FETCHED AUTHORS -->
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Zatvori</button>
+                <button type="button" class="btn btn-primary" onclick="addBook()">Spremi</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- GET BOOKS TABLE -->
+    <div class="table-responsive">
+        <table class="table table-secondary align-middle table-fixed w-auto mx-auto text-center">
+            <thead class="table-dark th-lg">
+                <tr>
+                    <th>Naslov i žanr</th>
+                    <th>Autor</th>
+                    <th>Slika</th>
+                    <th>Uređivanje</th>
+                    <th>Brisanje</th>
+                </tr>
+            </thead>
+            <tbody id="table-books">
+                <!-- TABLE - FETCHED BOOKS -->
+            </tbody>
+        </table>
+    </div>
+    
+    <script src="../js/admin.js"></script>
+    <script src="../js/module.js"></script>    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
@@ -63,7 +124,5 @@
     src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
     crossorigin="anonymous"></script>
-    <script src="../js/admin.js"></script>
-    <script src="../js/module.js"></script>    
 </body>
 </html>
