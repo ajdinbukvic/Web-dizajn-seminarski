@@ -6,12 +6,13 @@
 
 body {
     background-color: #faebcd;
-    padding-top: 5%;
+    padding-top: 80px;
 }
 
 .navbar {
     background-color: #434343;
-}
+    padding-top: 0;
+}    
 
 #title {
     color: #faebcd;
@@ -27,11 +28,9 @@ body {
     border-radius: 60%;
     background-color: #434343;
     color: #f7c873;
-    margin: auto;
+    margin: 40px auto;
     padding: 20px;
-    margin: 20px auto;
     width: 50%;
-    top: 5%;
 }
 
 .info:hover {

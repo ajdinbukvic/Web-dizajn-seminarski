@@ -16,7 +16,7 @@
         <nav id="navbar-top" class="navbar navbar-expand-lg fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#"><img src="../img/icons/library.png"></a>
-                <h1 id="title" class="d-flex ms-auto">eBiblioteka - ADMIN</h1>
+                <h2 id="title" class="d-flex ms-auto">eBiblioteka - ADMIN</h2>
                 <div class="d-flex ms-auto">
                     <button class="btn btn-warning" id="logout-button" onclick="logout()">Odjava</button>
                 </div>
@@ -25,13 +25,37 @@
     </div>
     <!-- NAVBAR END -->
 
-    <div class="container">
-        <img class="container-bg" src="../img/background.jpg" alt="">
-        <div class="info">
-            <h3 id="text">Dodavanje novog autora</h3>
-        </div>
+    <!-- MAIN CONTENT -->
+
+    <div class="info">
+        <h3 id="text">Dodavanje novog autora</h3>
     </div>
         
+    <!-- ADD AUTHOR FORM -->
+    <div class="container">
+        <div class="input-group mb-3 w-auto mx-auto p-5">
+            <input type="text" class="form-control" placeholder="Ime i prezime autora" aria-label="Autor" id="author-input">
+            <button class="btn btn-warning" type="button" id="add-author-button" onclick="addAuthor()">Dodaj</button>
+        </div>
+    </div>
+
+    <!-- GET AUTHORS TABLE -->
+    <table class="table align-middle table-secondary table-fixed w-50 mx-auto text-center">
+            <thead class="table-dark th-lg">
+                <tr>
+                    <th scope="col">R. br.</th>
+                    <th scope="col">Ime i prezime</th>
+                </tr>
+            </thead>
+            <tbody id="table-authors">
+                <!-- TABLE - FETCHED AUTHORS -->
+            </tbody>
+    </table>
+ 
+    <div class="info">
+        <h3 id="text">Upravljanje knjigama</h3>
+    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
