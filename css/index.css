@@ -73,10 +73,11 @@
     }
     .carousel-caption {
         width: 50%;
-        height: 50%;
+        height: 40%;
+        line-height: 40%;
         font-size: 14px;
     }
-  }
+}
 
 @media only screen and (min-width: 601px) {
     .carousel-caption {

@@ -8,6 +8,7 @@
     <link rel="shortcut icon" href="./img/icons/book.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/index.css">
 </head>
@@ -39,7 +40,7 @@
     </div>
 
     <!-- CAROUSEL - START -->
-    <div id="wrapper"></div>
+    <div id="wrapper">
         <div id="myCarousel" class="carousel carousel-dark slide" data-bs-ride="carousel">
             <!-- Wrapper for carousel items -->
             <div class="carousel-inner" id="carousel-main">
@@ -65,8 +66,58 @@
         <div class="row" id="card">
              <!-- CARD - FETCHED AUTHORS -->
         </div>
+    </div>
     <!-- CARDS - END -->
-    
+
+    <!-- FOOTER - START -->
+    <footer class="text-white text-center text-lg-start" id="footer">
+        <!-- Grid container -->
+        <div class="container-fluid p-4">
+            <!--Grid row-->
+            <div class="row mt-4">
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
+                    <img src="./img/background.jpg" id="footer-image" class="w-100 h-400">
+                </div>
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0 text-white">
+                    <h5 class="text-uppercase mb-4 pb-1 text-white text-center">Kontakt</h5>
+                    <ul class="list-group mb-3 mx-auto text-center">
+                        <li class="list-group-item mb-3">
+                            <i class="bi bi-house-door"></i><span class="ms-2"></span>72000 Zenica
+                        </li>
+                        <li class="list-group-item mb-3">
+                            <i class="bi bi-envelope"></i><span class="ms-2"></span>ebiblioteka@info.com
+                        </li>
+                        <li class="list-group-item mb-3">
+                            <i class="bi bi-telephone"></i><span class="ms-2"></span>+ 387 123 456
+                        </li>
+                        <li class="list-group-item mb-3">
+                            <i class="bi bi-printer"></i><span class="ms-2"></span>+ 61 654 321
+                         </li>
+                    </ul>
+                    <div class="mt-4 mx-auto text-center">
+                        <a href="https://www.facebook.com/" target="_blank" type="button" class="btn btn-floating btn-light btn-lg"><i class="bi bi-facebook"></i></a>
+                        <a href="https://www.instagram.com/" target="_blank" type="button" class="btn btn-floating btn-light btn-lg"><i class="bi bi-instagram"></i></a>
+                        <a href="https://twitter.com/" target="_blank" type="button" class="btn btn-floating btn-light btn-lg"><i class="bi bi-twitter"></i></a>
+                        <a href="https://www.youtube.com/" target="_blank" type="button" class="btn btn-floating btn-light btn-lg"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d91527.20797204367!2d17.862942891367233!3d44.20242700368127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475ee26b2c197a21%3A0x58a707c9607b8702!2sZenica!5e0!3m2!1shr!2sba!4v1652733720391!5m2!1shr!2sba" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2022 | Ajdin Bukvić |
+            <a class="text-white" href="https://github.com/ajdinbukvic" target="_blank">GitHub</a>
+            <i class="bi bi-github"></i>
+        </div>
+    </footer>
+    <!-- FOOTER - END -->
+  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
@@ -74,7 +125,7 @@
     src="https://code.jquery.com/jquery-3.6.0.min.js"
     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
     crossorigin="anonymous"></script>
-    <script src="./js/main.js"></script>
+    <script src="./js/index.js"></script>
     <script src="./js/module.js"></script>   
 </body>
 </html>
