@@ -8,8 +8,8 @@ addAuthorButton.addEventListener('click', () => {
 })
 
 const logout = () => {
-    infoMessage('Uspješno ste se odjavili!', 1000);
-    setTimeout(() => window.location.replace('../index.html'), 1000);
+    infoMessage('Uspješno ste se odjavili!', 2000);
+    setTimeout(() => window.location.replace('../index.html'), 2000);
 }
 
 const renderAuthors = authors => {
@@ -34,7 +34,7 @@ const addAuthor = () => {
     const newAuthor = document.getElementById('author-input').value;
 
     if(newAuthor === '') {
-        infoMessage('Morate prvo unijeti ime i prezime autora!', 1000);
+        infoMessage('Morate prvo unijeti ime i prezime autora!', 2000);
         return false;
     }
     
@@ -51,7 +51,7 @@ const addAuthor = () => {
         getAuthors();
     })
 
-    infoMessage('Uspješno ste dodali novog autora!', 1000);
+    infoMessage('Uspješno ste dodali novog autora!', 2000);
 }
 
 const addAuthorsToDropdownList = () => {
@@ -80,7 +80,7 @@ const addBook = () => {
     const bookAuthor = document.getElementById('add-book-author').value;
 
     if(bookName === '' || bookGenre === '' || bookImage === '' || bookAuthor === 'Odaberite autora') {
-        infoMessage('Morate prvo unijeti sve informacije o knjizi!', 1000);
+        infoMessage('Morate prvo unijeti sve informacije o knjizi!', 2000, 400);
         return false;
     }
     
@@ -184,7 +184,7 @@ const updateBook = () => {
     const bookImage = document.getElementById('edit-book-image').value;
 
     if(bookImage === '') {
-        infoMessage('Morate prvo unijeti novi link slike!', 1000);
+        infoMessage('Morate prvo unijeti novi link slike!', 2000, 400);
         return false;
     }
 

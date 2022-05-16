@@ -103,11 +103,11 @@ const login = event => {
     event.preventDefault();
 
     if(username === loginUsername && password === loginPassword) {
-        infoMessage('Uspješno ste se prijavili!', 1000);
-        setTimeout(() => window.location.replace('./html/admin.html'), 1000);
+        infoMessage('Uspješno ste se prijavili!', 2000);
+        setTimeout(() => window.location.replace('./html/admin.html'), 2000);
     }
     else {
-        infoMessage('Pogrešno korisničko ime ili lozinka!', 1000);
+        infoMessage('Pogrešno korisničko ime ili lozinka!', 2000);
         return;
     }
 }
