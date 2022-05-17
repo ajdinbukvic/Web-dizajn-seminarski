@@ -106,6 +106,8 @@ const addBook = () => {
         event.preventDefault();
         $('#add-book-form').find("input[type=text], textarea").val("");
      });
+
+     infoMessage('Uspješno ste se dodali novu knjigu!', 2000);
 }    
 
 const renderBooks = books => {
@@ -213,6 +215,8 @@ const updateBook = () => {
         event.preventDefault();
         $('#edit-book-form').find("input[type=text], textarea").val("");
      });
+
+     infoMessage('Uspješno ste promijenili informacije knjige!', 2000);
 }
 
 const deleteBook = bookId => {
@@ -229,4 +233,6 @@ const deleteBook = bookId => {
         tableBooks.innerHTML = '';
         getBooks();
     })
+
+    infoMessage('Uspješno ste izbrisali knjigu!', 2000);
 }

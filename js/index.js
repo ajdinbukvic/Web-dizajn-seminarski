@@ -1,6 +1,7 @@
 const loginUsername = 'admin';
 const loginPassword = 'admin';
 const maxAuthors = 9;
+let favoriteAuthorsCounter = 0;
 
 const renderBooks = books => {
 
@@ -59,7 +60,10 @@ const renderAuthors = authors => {
                     <h5 class="card-title text-center" style="color: #434343">${author.name}</h5>
                     <div class="text-center">
                         <div class="container" id="container-button-${authorsCounter}">
-                            <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo-${authorsCounter}" id="show-books-${authorsCounter}" onclick="getBooksbyAuthorId('${author.id}', ${authorsCounter})">Prikaži knjige</button>
+                            <button id="add-favorites-button" type="button" class="btn btn-primary" onclick="getAuthorById('${author.id}')">
+                                <i class="bi bi-person-plus"></i>
+                            </button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#demo-${authorsCounter}" id="show-books-${authorsCounter}" onclick="getBooksByAuthorId('${author.id}', ${authorsCounter})">Prikaži knjige</button>
                             <div class="collapse" id="demo-${authorsCounter}">
                             </div>
                         </div>
@@ -73,26 +77,94 @@ const renderAuthors = authors => {
     card.innerHTML = result;
 }
 
-const getBooksbyAuthorId = (authorId, authorsCounter) => {
+const getAuthorById = authorId => {
 
-    const container = document.getElementById(`demo-${authorsCounter}`);
-
-    fetch(`${BASE_URL}/authors/${authorId}/books`)
+    fetch(`${BASE_URL}/authors/${authorId}`)
         .then(handleErrors)
         .then(data => {
-            if(data.length === 0) {
-                container.innerHTML = `<p id="books-text">Trenutno nema knjiga od ovog autora...</p>`;
-            }
-            else { 
-                data.forEach(book => {
-                    container.innerHTML += `<p id="books-text">Naslov: ${book.name} (žanr: ${book.genre})</p>`;
-                })
-            }
+            addAuthorToFavorites(data);
         })
         .catch(err => {
             console.log(err);
         });
-        container.innerHTML = '';
+}
+
+const addAuthorToFavorites = author => {
+
+    const authorList = document.getElementById('favorite-authors-list');
+    const authorListCounter = document.getElementById('favorite-authors-counter');
+
+    if(favoriteAuthorsCounter === 0) {
+        authorList.innerHTML = '';
+    }
+
+    if(authorList.innerHTML.includes(`${author.name}`)) {
+        infoMessage('Autor već postoji u favoritima!', 2000);
+        return false;
+    }
+
+    authorList.innerHTML += `<li class="list-group-item mb-3" id="favorite-author-${favoriteAuthorsCounter}">
+                                <i class="bi bi-person"></i></i><span class="ms-2"></span>${author.name}
+                                <button id="remove-favorites-button-${favoriteAuthorsCounter}" type="button" class="btn" onclick="removeFavoriteAuthor(${favoriteAuthorsCounter})">
+                                    <i class="bi bi-x"></i>
+                                </button>
+                            </li>`;
+    
+    favoriteAuthorsCounter++;
+    authorListCounter.innerHTML = `Moji omiljeni autori [ ${favoriteAuthorsCounter} ]`;
+    infoMessage('Uspješno ste dodali autora u favorite!', 2000);
+}
+
+const removeFavoriteAuthor = removeAuthorId => {
+
+    const removeAuthor = document.getElementById(`favorite-author-${removeAuthorId}`);
+    const authorList = document.getElementById('favorite-authors-list');
+    const authorListCounter = document.getElementById('favorite-authors-counter');
+
+    removeAuthor.parentNode.removeChild(removeAuthor);
+    favoriteAuthorsCounter--;
+
+    if(favoriteAuthorsCounter === 0) {
+        authorList.innerHTML = `<li class="list-group-item mb-3">
+                                    </i><span class="ms-2"></span>Trenutno nemate omiljenih autora...
+                                </li>`;
+    }
+
+    authorListCounter.innerHTML = `Moji omiljeni autori [ ${favoriteAuthorsCounter} ]`;
+    infoMessage('Uspješno ste uklonili autora iz favorita!', 2000);
+}
+
+const getBooksByAuthorId = (authorId, authorsCounter) => {
+
+    const authorCard = document.getElementById(`demo-${authorsCounter}`);
+
+    fetch(`${BASE_URL}/authors/${authorId}/books`)
+        .then(handleErrors)
+        .then(data => {
+            authorCard.innerHTML = ''
+            showAuthorBooks(data, authorsCounter);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
+const showAuthorBooks = (books, authorsCounter) => {
+
+    const authorCard = document.getElementById(`demo-${authorsCounter}`);
+ 
+    if(books.length === 0) {
+        authorCard.innerHTML = `<p id="books-text">Trenutno nema knjiga od ovog autora...</p>`;
+    }
+    else { 
+        books.forEach(book => {
+            authorCard.innerHTML += `<p id="books-text">Naslov: ${book.name} (žanr: ${book.genre})</p>`;
+        })
+    }
+}
+
+const searchBooks = () => {
+    const searchInput = document.getElementById('search-input');
 }
 
 const login = event => {

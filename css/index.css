@@ -60,6 +60,24 @@
     box-shadow: none;
 }
 
+.container-favorites-search {
+    background-color: #434343;
+    color: #f8f8f8;
+}
+
+.sub-section {
+    border: 4px solid #f7c873;
+}
+
+.sub-title {
+    border-bottom: 4px solid #f7c873;
+    padding: 20px;
+}
+
+.contact-list {
+    background-color: #faebcd;
+}
+
 @media only screen and (max-width: 600px) {
     .navbar-toggler {
         background-color: #f7c873;
