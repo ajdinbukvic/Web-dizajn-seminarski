@@ -51,3 +51,7 @@ body {
     height: 400px;
     margin-bottom: 20px;
 }
+
+.contact-list {
+    background-color: #faebcd;
+}

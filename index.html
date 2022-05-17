@@ -88,12 +88,18 @@
                 <div class="sub-title">
                     <h3>Pretraživanje knjiga</h3>
                 </div>
-                <div class="input-group mb-3 w-auto mx-auto p-5">
+                <div class="input-group w-auto mx-auto p-5">
                     <input id="search-input" type="search" id="book-input" class="form-control"  aria-label="Knjiga" placeholder="Unesite naslov knjige...">
                     <button id="search-book-button" type="button" class="btn btn-primary" onclick="searchBooks()">
                         <i class="bi bi-search"></i>
                     </button>
+                    <button type="button" class="btn btn-primary" onclick="clearSearchResults()">
+                        <i class="bi bi-trash"></i>
+                    </button>
                 </div>
+                <ul class="list-group w-auto mx-auto p-5" id="search-books-list">
+                    <!-- FETCHED SEARCHED BOOKS -->
+                </ul>
             </div>
         </div>
     </div>

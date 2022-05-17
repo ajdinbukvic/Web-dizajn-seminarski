@@ -164,7 +164,56 @@ const showAuthorBooks = (books, authorsCounter) => {
 }
 
 const searchBooks = () => {
+
+    const API_URL = 'https://www.googleapis.com/books/v1/volumes?q=';
+    const API_KEY = '&key=AIzaSyAW1SIQLRUj-zcfxjhq4vdeAAayTGGpsSs';
+    const searchInput = document.getElementById('search-input').value;
+
+    if(searchInput === '') {
+        infoMessage('Morate prvo unijeti naslov knjige!', 2000);
+        return false;
+    }
+
+    fetch(`${API_URL}${searchInput}${API_KEY}`)
+        .then(handleErrors)
+        .then(data => {
+            showSearchBooks(data);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+}
+
+const showSearchBooks = books => {
+
+    const searchBookList = document.getElementById('search-books-list');
+    searchBookList.innerHTML = '';
+
+    if(books.items.length === 0) {
+        searchBookList.innerHTML = `<p class="text-white">Nema rezultata pretrage...</p>`; 
+    }
+    else {
+        books.items.forEach(book => {
+            searchBookList.innerHTML += `<li class="list-group-item mb-3">
+                                            </i><span class="ms-2"></span>${book.volumeInfo.title}
+                                            <button type="button" class="btn" onclick="openBook('${book.volumeInfo.previewLink}')">
+                                                <i class="bi bi-book"></i> (Čitaj)
+                                            </button>
+                                        </li>`;
+        })
+    }
+}
+
+const openBook = bookLink => {
+    window.open(bookLink, '_blank').focus();
+}
+
+const clearSearchResults = () => {
+
     const searchInput = document.getElementById('search-input');
+    searchInput.value = '';
+    const searchBookList = document.getElementById('search-books-list');
+    searchBookList.innerHTML = '';
 }
 
 const login = event => {
