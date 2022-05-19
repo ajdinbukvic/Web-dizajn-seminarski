@@ -3,6 +3,10 @@ const loginUsername = 'admin';
 const loginPassword = 'admin';
 //max authors that can be shown on page (because there's a lot of 'test' authors in database)
 const maxAuthors = 9;
+//global variables
+const authorList = document.getElementById('favorite-authors-list');
+const authorListCounter = document.getElementById('favorite-authors-counter');
+const searchBookList = document.getElementById('search-books-list');
 //array of author images paths (using in renderAuthors() function to display authors with images)
 const authorsImages = [
     './img/tolstoj.jpg',
@@ -100,8 +104,6 @@ const getAuthorById = authorId => {
 }
 
 const addAuthorToFavorites = author => {
-    const authorList = document.getElementById('favorite-authors-list');
-    const authorListCounter = document.getElementById('favorite-authors-counter');
     if (favoriteAuthorsCounter === 0) { //clearing default text in author list before adding new favorite author
         authorList.innerHTML = '';
     }
@@ -123,8 +125,6 @@ const addAuthorToFavorites = author => {
 
 const removeFavoriteAuthor = removeAuthorId => {
     const removeAuthor = document.getElementById(`favorite-author-${removeAuthorId}`);
-    const authorList = document.getElementById('favorite-authors-list');
-    const authorListCounter = document.getElementById('favorite-authors-counter');
     removeAuthor.parentNode.removeChild(removeAuthor); //removing only selected author from author list
     favoriteAuthorsCounter--;
     if (favoriteAuthorsCounter === 0) { //setting default text if there's no more favorite authors
@@ -138,11 +138,9 @@ const removeFavoriteAuthor = removeAuthorId => {
 }
 
 const getBooksByAuthorId = (authorId, authorsCounter) => {
-    const authorCard = document.getElementById(`demo-${authorsCounter}`); //getting element with unique ID
     fetch(`${BASE_URL}/authors/${authorId}/books`)
         .then(handleErrors)
         .then(data => {
-            authorCard.innerHTML = ''
             showAuthorBooks(data, authorsCounter);
         })
         .catch(err => {
@@ -152,8 +150,9 @@ const getBooksByAuthorId = (authorId, authorsCounter) => {
 
 const showAuthorBooks = (books, authorsCounter) => {
     const authorCard = document.getElementById(`demo-${authorsCounter}`); //getting element with unique ID
+    authorCard.innerHTML = ''; //clearing previous content of author card before showing new content
     if (books.length === 0) {
-        authorCard.innerHTML = `<p id="books-text">Trenutno nema knjiga od ovog autora...</p>`;
+        authorCard.innerHTML = `<p id="books-text">Trenutno nema knjiga od ovog autora...</p>`; //setting default message if there's no books of selected author
     }
     else { 
         books.forEach(book => {
@@ -182,8 +181,7 @@ const searchBooks = () => {
 }
 
 const showSearchBooks = books => {
-    const searchBookList = document.getElementById('search-books-list');
-    searchBookList.innerHTML = ''; //clearing searhc book list before starting new search
+    searchBookList.innerHTML = ''; //clearing search book list before starting new search
     if (books.items.length === 0) { //setting default message if searched data is empty
         searchBookList.innerHTML = `<p class="text-white">Nema rezultata pretrage...</p>`; 
     }
@@ -208,6 +206,5 @@ const clearSearchResults = () => {
     //clearing search input and search results after clicking 'trash' icon
     const searchInput = document.getElementById('search-input');
     searchInput.value = '';
-    const searchBookList = document.getElementById('search-books-list');
     searchBookList.innerHTML = '';
 }

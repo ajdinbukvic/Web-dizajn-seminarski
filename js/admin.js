@@ -15,6 +15,7 @@ const logout = () => {
 }
 
 const renderAuthors = authors => {
+    tableAuthors.innerHTML = ''; //clearing table content before new rendering
     let authorsCounter = 1; //authors displayed in table starts with 1 (not 0)
     let result = '';
     authors.forEach(author => {
@@ -43,10 +44,15 @@ const addAuthor = () => {
     })
     .then(res => { 
         console.log(res);
-        tableAuthors.innerHTML = '';
-        getAuthors();
+        if (res.status === 201) { //successful deleting only for status 201
+            //in that case rendering books again and showing success message
+            getAuthors();
+            infoMessage('Uspješno ste dodali novog autora!', 2000);
+        }
     })
-    infoMessage('Uspješno ste dodali novog autora!', 2000);
+    .catch(err => {
+        console.log(err);
+    });
 }
 
 const addAuthorsToDropdownList = () => {
@@ -87,18 +93,24 @@ const addBook = () => {
     })
     .then(res => {
         console.log(res);
-        tableBooks.innerHTML = '';
-        getBooks();
+        if (res.status === 201) { //successful deleting only for status 201
+            //in that case rendering books again and showing success message
+            getBooks();
+            infoMessage('Uspješno ste se dodali novu knjigu!', 2000);
+        }
     })
+    .catch(err => {
+        console.log(err);
+    });
     $('#add-book-modal').modal('hide'); //closing modal after submitting form
     $('#add-book-modal').on('hidden.bs.modal', (event) => {
         event.preventDefault();
         $('#add-book-form').find("input[type=text], textarea").val(""); //clearing all input fields in modal after submitting form
     });
-    infoMessage('Uspješno ste se dodali novu knjigu!', 2000);
 }    
 
 const renderBooks = books => {
+    tableBooks.innerHTML = ''; //clearing table content before new rendering
     let result = '';
     books.forEach(book => {
         result += `
@@ -152,7 +164,7 @@ const editBook = book => {
     const bookName = document.getElementById('edit-book-name');
     const bookGenre = document.getElementById('edit-book-genre');
     const bookAuthorId = document.getElementById('edit-book-author-id');
-    //setting values of edit form with book chosen book (fetch - get by id)
+    //setting values of edit form to chosen book (fetch - get book by id)
     bookId.value = book.id;
     bookName.value = book.name;
     bookGenre.value = book.genre;
@@ -184,15 +196,20 @@ const updateBook = () => {
     })
     .then(res => {
         console.log(res);
-        tableBooks.innerHTML = '';
-        getBooks();
+        if (res.status === 204) { //successful deleting only for status 204
+            //in that case rendering books again and showing success message
+            getBooks();
+            infoMessage('Uspješno ste promijenili informacije knjige!', 2000);
+        }
     })
+    .catch(err => {
+        console.log(err);
+    });
     $('#edit-book-modal').modal('hide'); //closing modal after submitting form
     $('#edit-book-modal').on('hidden.bs.modal', (event) => {
         event.preventDefault();
         $('#edit-book-form').find("input[type=text], textarea").val(""); //clearing all input fields in modal after submitting form
     });
-    infoMessage('Uspješno ste promijenili informacije knjige!', 2000);
 }
 
 const deleteBook = bookId => {
@@ -204,8 +221,13 @@ const deleteBook = bookId => {
     })
     .then(res => {
         console.log(res);
-        tableBooks.innerHTML = '';
-        getBooks();
+        if (res.status === 204) { //successful deleting only for status 204
+            //in that case rendering books again and showing success message
+            getBooks();
+            infoMessage('Uspješno ste izbrisali knjigu!', 2000);
+        }
     })
-    infoMessage('Uspješno ste izbrisali knjigu!', 2000);
+    .catch(err => {
+        console.log(err);
+    });
 }

@@ -2,7 +2,7 @@
 const BASE_URL = 'https://ptf-web-dizajn-2022.azurewebsites.net';
 
 //adding fixed navbar and changing navbar opacity on page scrolling
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => {
         const navbar = document.getElementById('navbar-top');
         if (window.scrollY > 50) {
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const infoMessage = (message, sec, topPosition = 0) => { //default value for 'top' is 0 (when modal is closed)
     //popup message called to shown results of users operations (sucessful/unsuccessful)
-    const popupMessage = document.createElement("div");
+    const popupMessage = document.createElement('div');
     popupMessage.setAttribute('class', 'info-message'); //setting class defined in CSS
     popupMessage.setAttribute('style', `top:${topPosition}px;`); //defining 'top' because message is not shown when modal is opened
     popupMessage.innerHTML = message;
