@@ -25,7 +25,7 @@
     margin: auto;
     opacity: 70%;
     border: 5px solid #434343;
-    line-height: 50px;
+    line-height: 5vh;
 }
 
 .carousel-caption h3,p,h5 {
@@ -86,16 +86,16 @@
         height: 40vh;
     }
     .carousel-caption {
-        width: 50%;
-        height: 40%;
-        line-height: 40%;
+        width: 60%;
+        height: 60%;
+        line-height: 1vh;
         font-size: 14px;
     }
 }
 
 @media only screen and (min-width: 601px) {
     .carousel-caption {
-        width: 50%;
+        width: 60%;
         height: 30%;
         font-size: 20px;
     }
